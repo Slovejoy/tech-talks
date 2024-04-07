@@ -1,0 +1,35 @@
+% Baseline document and packages
+\documentclass[aspectratio=169]{beamer}
+
+\input{chapters/preamble}
+
+\title{The Chrome V8 JavaScript Engine -- A VR perspective}
+\subtitle{Internals and Exploitation Patterns of the leading JavaScript Interpreter}
+\author[Sam Lovejoy]{\textcolor{yellow}{Sam Lovejoy}}
+\institute[IR]{
+    \textcolor{white}{Independent Research}%
+}
+\date{\today}
+%%%%%% NOTES CONFIGURATION %%%%%%
+\input{config}
+\iftoggle{NOTES}{\setbeameroption{show notes on second screen=right}}
+
+\begin{document}
+    % Introduction included here, all other contents are in their respective files
+    \section{Introduction}
+    \frame{\titlepage 
+        \begin{center}
+            Open Source Slides on \href{https://github.com/slovejoy/tech-talks}{\color{pink}https://github.com/slovejoy/tech-talks} \\
+            Freely Distributable under CC BY-NC-SA 4.0 License
+        \end{center}}
+    \begin{frame}{How to Hack V8}
+        \tableofcontents
+    \end{frame}
+    \input{chapters/motivation}
+    \input{chapters/v8-internals}
+    \input{chapters/vulnerability-patterns}
+    \input{chapters/exploit}
+    \input{chapters/conclusion}
+    \iftoggle{LAB}{\input{chapters/lab}}{}
+    \iftoggle{CUT-CONTENT}{\input{chapters/cut-content}}{}
+\end{document}

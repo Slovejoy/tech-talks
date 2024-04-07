@@ -1,0 +1,14 @@
+struct genus {
+  char * name, clade;
+  bool extinct;
+};
+
+struct phylum {
+  char * name, domain, kingdom;
+};
+
+void fun_fact(struct phylum * phy) {
+  printf("Phylum %s are %s", 
+    phy->name,
+    phy->kingdom);
+}

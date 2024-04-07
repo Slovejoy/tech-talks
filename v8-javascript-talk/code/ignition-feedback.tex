@@ -1,0 +1,12 @@
+  f = function(a, b) {
+    if (a > b) {
+        return b + a;
+    }
+    return a + b;
+  }
+
+  for (let i = 0; i < 0x10000; i++) {
+    f(i,i);
+  };
+  %OptimizeFunctionOnNextCall(f);
+  f(1,2);

@@ -1,0 +1,6 @@
+# Ignore builds in PDFs directory
+pdfs/*
+
+# Ignore any zipfiles and PDFs
+*.zip
+*.pdf

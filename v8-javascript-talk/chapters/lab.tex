@@ -1,0 +1,38 @@
+\section{LAB}
+\begin{frame}{}
+    \centering
+        \Huge\bfseries
+    \textcolor{yellow}{LAB}
+\end{frame}
+
+\begin{frame}{Promise.Any.Call leaks "TheHole" Value -- CVE-2022-4174}{Discovered by Zhenghang "kiprey" Xiao -- Independent Security Researcher}
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item This bug functionally behaves identical to Json.stringify's hole leak.
+                \item There are plenty of exploits for TheHole online. 
+                \item Download a specific version from \href{https://commondatastorage.googleapis.com/v8-asan/index.html}{\color{pink}here}.
+                    \begin{itemize}
+                        \item Version '77090' will work for this exploit.
+                        \item Use 'linux-release' to pop a calculator.
+                        \item Use 'linux-debug' when not trying to exploit.
+                        \item Use '--gdbjit-full' in your command line! 
+                    \end{itemize}
+            \end{itemize}
+        \href{https://bugs.chromium.org/p/chromium/issues/detail?id=1379054}{\color{pink}{crbug-1379054}} \\
+        Try it yourself! Try and understand every line of code by leaving a comment. 
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \usemintedstyle{vim}
+            \inputminted{js}{code/promise.tex}
+        \end{column}
+    \end{columns}
+    \note{
+        \begin{itemize}
+            \item Promise.Any.Call was patched in Chrome 106.
+            \item This vulnerability is exploitable from Chrome 86-106.
+            \item Zhenghang Xiao is still an active Chrome VRP researcher, ranking 3rd in bug bounties in Chrome.
+            \item He has a black hat talk, it's pretty cool. 
+        \end{itemize}
+    }
+\end{frame}
