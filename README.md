@@ -2,7 +2,7 @@
 This repository contains the source code of various slide-decks related to security research.
 
 # Editing
-These presentations were built using the (overleaf editor)[https://www.overleaf.com/]. To compile,
+These presentations were built using the [overleaf editor](https://www.overleaf.com/). To compile,
 modify, and view these presentations using the overleaf editor,
 
 1. Load the presentation of interest into a .zip folder, on Linux, `zip -r v8-talk.zip v8-talk/`.
@@ -12,7 +12,7 @@ modify, and view these presentations using the overleaf editor,
 
 
 # Presenting
-Presenting LaTeX Beamer PDF files is best done with (pympress)[https://pympress.github.io/].  
+Presenting LaTeX Beamer PDF files is best done with [pympress](https://pympress.github.io/).  
 
 ```
 python3 -m pip install pympress
