@@ -3,14 +3,14 @@
 
 \begin{frame}{How does V8 work?}
     \begin{block}{V8 is a JIT Compiler for JavaScript and WebAssembly}
-    JIT compilers are compilers that profile code as it runs, generating optimizations along the way for "hot" code, or code that runs many times. 
+    JIT compilers are compilers that profile code as it runs, generating optimizations along the way for ``hot" code, or code that runs many times. 
     \end{block}
     \begin{block}{Simplified V8 Pipeline}
         \begin{enumerate}
             \item Parser -- Generate an AST from the JavaScript code
-            \item Interpreter -- Named "Ignition", generates an IL representation called Ignition bytecode
-            \item Early Compiler -- Named "Maglev", lowers Ignition bytecode into machine code
-            \item Optimizing Compiler -- Named "TurboFan", optimizes "hot" machine code with feedback
+            \item Interpreter -- Named ``Ignition", generates an IL representation called Ignition bytecode
+            \item Early Compiler -- Named ``Maglev", lowers Ignition bytecode into machine code
+            \item Optimizing Compiler -- Named ``TurboFan", optimizes ``hot" machine code with feedback
         \end{enumerate}
     \end{block}
     \note{
@@ -27,7 +27,7 @@
     \begin{figure}
         \centering
         \includegraphics[width=0.6\textwidth]{images/v8-diagram.png}
-        \caption{V8 Pipeline Diagram, from Franziska Hinkelmann's \href{https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775}{\color{pink}"Understanding V8's Bytecode"}}
+        \caption{V8 Pipeline Diagram, from Franziska Hinkelmann's \href{https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775}{\color{pink}``Understanding V8's Bytecode"}}
     \end{figure}
     \note{
         \begin{itemize}
@@ -53,9 +53,9 @@
     \note{
         \begin{itemize}
             \item Note the flags to be run on d8, the v8 command line utility.
-            \item "Ldar" - Load Accumulator from register (a1, contains arg)
-            \item "Add"  - Add register ([2] is argument)
-            \item "Star" - Store accumulator into register "result" into r0 
+            \item ``Ldar" - Load Accumulator from register (a1, contains arg)
+            \item ``Add"  - Add register ([2] is argument)
+            \item ``Star" - Store accumulator into register ``result" into r0 
         \end{itemize}
     }
 \end{frame}
@@ -69,7 +69,7 @@
         \begin{column}{0.5\textwidth}
             \begin{itemize}
                 \item  As a function runs, Turbofan will provide feedback to Ignition to generate more optimized bytecode. This includes type information, size information, and more! 
-                \item Incorrect assumptions lead to a "bailout" which leads to a de-optimization.
+                \item Incorrect assumptions lead to a ``bailout" which leads to a de-optimization.
                 \item This are lots of potential security problems here! The majority of vulnerabilities in V8 occur in the JIT engine!
             \end{itemize}
         \end{column}
@@ -77,10 +77,10 @@
     \note{
         \begin{itemize}
             \item The first loop contains the body of the function.  
-            \item The second for loop contains code that makes the function "hot" (able to be optimized).
-            \item The \% sign is to force optimization, which must occur on "hot" functions. \% functions require -allow-natives-syntax. 
+            \item The second for loop contains code that makes the function ``hot" (able to be optimized).
+            \item The \% sign is to force optimization, which must occur on ``hot" functions. \% functions require -allow-natives-syntax. 
             \item Finally, call the function forces the optimization process.
-            \item The code here is "dead" for integers, but is important for strings!
+            \item The code here is ``dead" for integers, but is important for strings!
         \end{itemize}
     }
 \end{frame}
@@ -90,7 +90,7 @@
         \begin{column}{0.33\textwidth}
             \begin{itemize}
                 \item Turbofan is the optimizing compiler of V8.
-                \item It uses its "Sea of Nodes" to generate a graph from the Ignition bytecode. 
+                \item It uses its ``Sea of Nodes" to generate a graph from the Ignition bytecode. 
                 \item It also translates these nodes into machine code.
                 \item Graphs can be visualized using \href{https://chromium.googlesource.com/v8/v8/+/refs/heads/main/tools/turbolizer/}{\color{pink}turbolizer}. 
             \end{itemize}
@@ -113,7 +113,7 @@
         \begin{column}{0.35\textwidth}
             \begin{itemize}
                 \item Introduced in \href{https://v8.dev/blog/v8-release-92}{\color{pink}V8 v9.2}, the pointer cage is a namesake exploit protection employed by the V8 engine.
-                \item Pointers in V8 are "sandboxed" to never point outside of the JS Heap. 
+                \item Pointers in V8 are ``sandboxed" to never point outside of the JS Heap. 
                 \item Modern pointers are all 32-bit and \textit{tagged} using \href{https://v8.dev/blog/pointer-compression}{\color{pink}pointer compression}.
             \end{itemize}
         \end{column}
