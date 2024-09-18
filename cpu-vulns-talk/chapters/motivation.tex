@@ -1,0 +1,50 @@
+\section{Motivation}
+\frame{\sectionpage}
+
+\begin{frame}{Threat Models using Hardware Vulnerabilities}
+    Academic researchers have demonstrated CPU vulnerabilities for decades, but the Spectre+Meltdown publications in Jan 2018 introduced them into modern threat models. They can be used in software exploit chains in the following spots,
+    \begin{block}{Places in Existing Exploit Chains for CPU Vulnerabilities}
+        \begin{itemize}
+            \item Local Privilege Escalation (\$250k+)
+            \item Browser Sandbox Escapes (\$250k)
+            \item Virtualization Escape (\$200k)
+            \item Bypasses for security protections like \href{https://arxiv.org/abs/2406.08719}{\color{pink}ARM MTE+PAC}, ASLR, and Intel CET
+            \begin{itemize}
+                \item Most microarchitectural vulnerabilities tend to yield arbitrary reads across the system.
+            \end{itemize}
+            \item Pivoting into coprocessors, namely TEEs, but also basebands and DSPs.
+       \end{itemize}
+    \end{block}
+    Even once discovered, it takes around 1 year to patch hardware flaws if they are patched at all. 
+    \note{
+        \begin{itemize}
+            \item Finding hardware bugs is really hard, a few have been found with fuzzing, some by accident, but the majority academics kinda just "conjecture" as try stuff. Sometimes bugs can be gleaned from documentation.
+            \item Threat modeling hardware bugs is kinda messed up; in fact, most SoC vendors don't care about instruction-level granularity of code (i.e. they don't care if other folks on the same system know what code you're executing)!
+            \item SoC vendors do care that secrets (i.e. dcache) stay protected, such as tokens, keys, and cookies.
+            \item See also, the relatively unexplored fingerprinting process.
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{APT Orchestration of Hardware Vulnerabilities}
+    \begin{block}{CVE-2023-38606}
+        \begin{itemize}
+            \item Exposed GPU MMIO debug registers can disable page protections in the iOS kernel.
+            \item The only known hardware vulnerability known ever exploited according to CISA.
+            \item Used in \href{https://securelist.com/operation-triangulation-the-last-hardware-mystery/111669/}{\color{pink}{Operation Triangulation Sensation}} against Kaspersky Labs (believed to be USG).
+        \end{itemize}
+    \end{block}
+    Other use cases:
+    \begin{itemize}
+        \item Stephen Röttger of Google demonstrates that microarchitectural vulnerabilities are useful for escaping the \href{https://googleprojectzero.blogspot.com/2020/02/escaping-chrome-sandbox-with-ridl.html}{\color{pink}{Chrome Sandbox}}.
+        \item Carlo Meijer of Midnight Blue uses a \href{https://www.usenix.org/system/files/usenixsecurity23-meijer.pdf}{\color{pink}cache-timing side-channel} to break into the TEE of a Texas Instruments OMAP-L138 SoC. 
+    \end{itemize}
+    As advanced memory security features become more common, the security landscape will greater reward logical bugs including hardware and microarchitectural flaws. 
+    \note{
+        \begin{itemize}
+            \item It's incredibly hard to detect the exploitation of hardware flaws, there may be some but we just don't know.
+            \item In some examples, hardware flaws may be helpful for reverse engineering and introspection as well, not unlike fault injection.
+            \item There are tons of papers getting published right now in this field, but not all of these vulnerabilities are practical for exploitation.
+        \end{itemize}
+    }
+\end{frame}

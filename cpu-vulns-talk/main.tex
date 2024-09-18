@@ -1,0 +1,35 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{chapters/preamble}
+
+\title{Modern Attacks on CPU Microarchitectures}
+\subtitle{The Attack Surface and Exploitation Patterns of CPUs}
+\author[Sam Lovejoy]{\textcolor{yellow}{Sam Lovejoy}}
+\institute[IR]{
+    \textcolor{white}{Independent Research}%
+}
+\date{\today}
+
+%%%%%% NOTES CONFIGURATION %%%%%%
+\input{config}
+\iftoggle{NOTES}{\setbeameroption{show notes on second screen=right}}
+
+\begin{document}
+    \section{Introduction}
+    \frame{\titlepage 
+        \begin{center}
+            Open Source Slides on \href{https://github.com/slovejoy/tech-talks}{\color{pink}https://github.com/slovejoy/tech-talks} \\
+            Freely Distributable under CC BY-NC-SA 4.0 License
+        \end{center}}
+    \begin{frame}{Today's Topics}
+        \tableofcontents
+    \end{frame}
+    \input{chapters/motivation}
+    \input{chapters/attack_surface}
+    \input{chapters/classic-exemplars}
+    \input{chapters/modern-exemplars}
+    \iftoggle{DEMO}{\input{chapters/demo}}
+    % Leave empty line here for iftoggle
+    
+    \input{chapters/conclusion}
+\end{document}
